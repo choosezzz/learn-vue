@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event methods</title>
+	<script src="vue.2.6.js"></script>
+</head>
+<body>
+	<div id="root">
+		<div v-on:click="handleClick">
+			{{content}}
+		</div>
+		<div @click="handleClick">
+			{{content}}
+		</div>
+	</div>
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+				content: "hello world"
+			},
+			methods: {
+				handleClick: function(){
+					this.content = "hello Vue"
+				}
+			}
+		});
+	</script>
+</body>
+</html>

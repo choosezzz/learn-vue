@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue data</title>
+	<script src="vue.2.6.js"></script>
+</head>
+<body>
+	<div id="root">
+		<div>插值表达式访问data中number:<h1>{{number}}</h1></div>
+		<div>插值表达式访问data中boolean:<h1>{{boolean}}</h1></div>
+		<div>v-text访问data中的string:<h1 v-text="string"></h1></div>
+		<div>v-text访问data中的html:<h1 v-text="html"></h1></div>
+		<div>v-html访问data中的html:<div v-html="html"></div></div>
+	</div>
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+				number: 123,
+				string: "hello vue",
+				boolean: true,
+				html: "<h2>hello vue</h2>"
+			}
+		});
+	</script>
+</body>
+</html>
