@@ -3,23 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>vue hello world</title>
 	<script src="vue.2.6.js"></script>
 </head>
 <body>
-	<div id="root" @click='vueClick'>
+	<div id="root">
 		{{content}}
 	</div>
 	<script>
 		var app = new Vue({
-			el:'#root',
+			el:"#root",
 			data:{
-				content:'hello vue'
-			},
-			methods:{
-				vueClick:function(){
-					this.content = 'change'
-				}
+				content:"hello world"
 			}
 		})
 	</script>
