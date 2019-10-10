@@ -7,8 +7,8 @@
 </head>
 <body>
 	<div id="root">
-		<div v-on:click="handleClick">
-			{{content}}
+		<!-- 使用v-on:或者@模板绑定事件 -->
+		<div v-on:click="handleClick" v-text="content">
 		</div>
 		<div @click="handleClick">
 			{{content}}
