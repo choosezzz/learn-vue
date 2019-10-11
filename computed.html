@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed 计算属性</title>
+	<script src="vue.2.6.js"></script>
+</head>
+<body>
+	<div id="root">
+		<h1>vue加法计算</h1>
+		firstNumber：<input type="number" v-model="firstNumber"/>
+		<br>
+		nextNumber：<input type="number" v-model="nextNumber" />
+		<br>
+		result：<input type="number" :value="result" readonly="true" />
+	</div>
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+				firstNumber: 100,
+				nextNumber: 200,
+			},
+			computed: {
+				result: function(){
+					return parseInt(this.firstNumber) + parseInt(this.nextNumber);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

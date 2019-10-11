@@ -75,4 +75,84 @@
          }
          ```
 
-   4. 
+   4. 属性绑定(单项绑定)
+
+      1. 单项绑定：data发生变化属性值改变，属性值改变data不会发生变化
+
+      2. v-bind:attr_name="key"，使用v-bind:属性名的方式给该属性赋值，key为vue实例data中的字段
+
+      3. 简写为":attr_name='key'"
+
+      4. 示例：v-bind.html
+
+         ```javascript
+         <div v-bind:title="title">
+         	<h1>使用v-bind:title</h1>
+         </div>
+         <div :title="title">
+         	<h1>使用:title</h1>
+         </div>
+         ```
+
+   5. 双向数据绑定
+
+      1. v-model="key"：该语法将vue实例中key对应的数据与当前模板的value双向绑定，key变化时value变化，value变化时，key对应的数据也发生改变。
+
+      2. 示例：v-model.html
+
+         ```javascript
+         <div id="root">
+         	单向数据绑定：<input type="text" :value="content">
+         	<br>
+         	双向数据绑定：<input type="text" v-model="content"/>
+         	<div>
+         		<h1>{{content}}</h1>
+         	</div>
+         </div>
+         <script>
+         	new Vue({
+         		el: "#root",
+         		data: {
+         			content: "hello vue"
+         		}
+         	});
+         </script>
+         ```
+
+   6. 计算属性
+
+      1. 使用computed属性声明计算属性，计算属性的值对应函数的返回值
+
+      2. 示例：computed.html
+
+         1. computed：声明计算属性
+         2. result：表示计算属性名称
+         3. function返回值为计算属性result的值
+
+         ```javascript
+         computed: {
+         	result: function(){
+         		return parseInt(this.firstNumber) + parseInt(this.nextNumber);
+         	}
+         }
+         ```
+
+   7. 侦听器
+
+      1. 使用watch属性声明侦听器，侦听属性变化，对应处理变化的函数
+
+      2. 示例：watch.html
+
+         1. watch：声明侦听器
+         2. fullName：要侦听的属性字段
+         3. function：属性变化对应的处理函数
+
+         ```javascript
+         watch: {
+         	fullName: function(){
+         		this.changeCount ++;
+         	}
+         }
+         ```
+
+   8. 

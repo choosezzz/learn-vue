@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-model 双向数据绑定</title>
+	<script src="vue.2.6.js"></script>
+</head>
+<body>
+	<div id="root">
+		单向数据绑定：<input type="text" :value="content">
+		<br>
+		双向数据绑定：<input type="text" v-model="content"/>
+		<div>
+			<h1>{{content}}</h1>
+		</div>
+	</div>
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+				content: "hello vue"
+			}
+		});
+	</script>
+</body>
+</html>
