@@ -155,4 +155,50 @@
          }
          ```
 
-   8. 
+   8. v-if
+
+      1. 用来控制元素是否存在，true则向dom中添加元素，false则从dom中删除该元素
+
+      2. v-if每次都会创建新的dom元素或者删除dom元素
+
+      3. 示例：v-if&v-show.html
+
+         ```javascript
+         <div id="if" v-if="isexist" @click="notExist">
+         	{{content}}
+         </div>
+         ```
+
+   9. v-show
+
+      1. 用来控制元素是否展示，true则显示该元素，false则将display属性置为none
+
+      2. v-show只是控制元素的display属性，不会频繁操作dom树，性能更好
+
+      3. 示例：v-if&v-show.html
+
+         ```javascript
+         <div id="show" v-show="isshow" @click="notShow">
+         	{{content}}
+         </div>
+         ```
+
+   10. v-for
+
+       1. 用来遍历某个集合
+
+       2. 语法：v-for="item of list"，其中list为要遍历的集合，item为每次遍历到的属性值
+
+       3. v-for="(item, index) of list"，其中index为遍历到的下标
+
+       4. 最好为每一项绑定key属性,key值需要唯一不重复，提高渲染的性能
+
+       5. 示例：v-for.html
+
+          ```javascript
+          <ul>
+          	<li v-for="(item,index) of list" :key="index">{{item}}</li>
+          </ul>
+          ```
+
+          

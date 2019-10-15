@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-for 循环</title>
+	<script src="vue.2.6.js"></script>
+</head>
+<body>
+	<div id="root">
+		<ul>
+			<li v-for="(item, index) of list" :key="index">{{item}}</li>
+		</ul>
+	</div>
+	<script>
+		new Vue({
+			el: "#root",
+			data: {
+				list: [
+					"9:00起床",
+					"9：30出门",
+					"10:00到公司",
+					"开始工作",
+					"晚上7:00-10:00随缘下班"
+				]
+			}
+		});
+	</script>
+</body>
+</html>

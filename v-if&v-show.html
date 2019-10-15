@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if & v-show 控制元素是否显示</title>
+	<script src="vue.2.6.js"></script>
+	<style>
+		#if{
+			width: 200px;
+			height: 50px;
+			text-align: center;
+			border: 2px double green;
+		}
+		#show{
+
+			width: 200px;
+			height: 50px;
+			text-align: center;
+			border: 3px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="root">
+		<div id="if" v-if="isexist">
+			{{content}}
+		</div>
+		<div id="show" v-show="isshow">
+			{{content}}
+		</div>
+		<button @click="handleShow">点击隐藏/显示</button>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el: "#root",
+			data: {
+				content: "点击隐藏",
+				isexist: true,
+				isshow: true
+			},
+			methods: {
+				handleShow: function(){
+					this.isexist = !this.isexist;
+					this.isshow = !this.isshow;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
