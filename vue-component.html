@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Global Component</title>
+	<script src="vue.2.6.js"></script>
+</head>
+<body>
+	<div id="admin">
+		<v-li></v-li>
+		<v-div></v-div>
+	</div>
+	<hr>
+	<div id="root">
+		<v-li content="全局组件"></v-li>
+		<vue-div message="局部组件"></vue-div>
+	</div>
+	<script>
+		Vue.component("v-li", {
+			props: ["content"],
+			template: "<li>{{content}}</li>"
+		});
+		var v_div = {
+			props: ["message"],
+			template : "<div><h1>{{message}}</h1></div>"
+		};
+		new Vue({
+			el: "#root",
+			components: {
+				"vue-div": v_div
+			}
+		});
+		new Vue({
+			el: "#admin",
+			components: {
+				"v-div":v_div
+			}
+		});
+	</script>
+</body>
+</html>

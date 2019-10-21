@@ -203,10 +203,57 @@
 
    11. 练习：todo-list.html
 
-   12. vue组件拆分
+   12. vue组件
 
-       1. 
+       1. 全局组件，在任意Vue挂载点中任何地方都可以使用：Vue.component();
+
+       2. 示例：vue-component.html
+
+          ```JavaScript
+          Vue.component('todo-item', {
+          	template: "<li>全局组件</li>"
+          });
+          ```
+
+       3. 局部组件
+
+          1. 创建组件对象，需要在vue实例中注册组件才可以使用
+          2. 示例：vue-component.html
+
+          ```JavaScript
+          //声明一个组件
+          var v_div = {
+          	template : "<div><h1>局部组件</h1></div>"
+          };
+          new Vue({
+          	el: "#root",
+              //注册该组件
+          	components: {
+          		"v-div": v_div
+          	}
+          });
+          ```
+
+       4. 向组件中传递参数：通过属性传参
+
+          1. 外层向组件中传递参数值，组件中使用props属性声明要接收的属性名称。
+
+          2. 示例：vue-component.html
+
+             ```javascript
+             Vue.component('todo-item', {
+                 //接收外层传递的content属性值
+                 props: ["content"],
+             	template: "<li>全局组件</li>"
+             });
+             var v_div = {
+             	props: ["message"],
+             	template : "<div><h1>{{message}}</h1></div>"
+             };
+             ```
 
    13. 
+
+   14. 
 
    

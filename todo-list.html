@@ -13,9 +13,15 @@
 			<li v-for="(item,index) of list" :key="index">
 				{{item}}
 			</li>
+			<todo-item></todo-item>
 		</ul>
 	</div>
 	<script>
+
+		//Vue组件
+		Vue.component('todo-item', {
+			template: "<li>item</li>"
+		});
 		new Vue({
 			el: "#root",
 			data: {
@@ -28,6 +34,7 @@
 					this.list.push(this.intputValue);
 					this.intputValue = '';
 				}
+			}
 		});
 	</script>
 </body>
