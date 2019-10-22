@@ -252,8 +252,48 @@
              };
              ```
 
-   13. 
+   13. 组件与实例的关系
 
-   14. 
+       1. 每个Vue组件就是一个Vue实例，可以使用Vue实例的全部功能
+       2. 每个实例都有自己的模板，对于根实例，如果不定义末班，则整个挂载点内的全部dom元素都为模板
+
+   14. 父子组件通信机制：发布订阅模式
+
+       1. 子组件使用this.$emit('eventname',[params])方法向父组件触发事件，eventname指定触发父组件事件，params为传递的参数
+
+       2. 父组件监听对应的触发事件：@eventname
+
+       3. 示例：list-curd.html
+
+          ```javascript
+          // 子组件发布触发事件
+          Vue.component('curd-list',{
+          	props: ['item','index'],
+          	template: "<li>{{item}} <button @click='deleteThis'>删除</button></li>",
+          	// 子组件处理组件内部绑定的事件
+              methods: {
+          		deleteThis: function(){
+                      //向父组件触发delete事件，传递的参数为index
+          			this.$emit('delete-item', this.index);
+          		}
+          	}
+          });
+          
+          //父组件订阅处理事件
+          <curd-list v-for="(item,index) of list" 
+          	:key="index"
+          	:index="index"
+          	:item="item"
+          	//监听对应的事件
+          	@delete-item="deleteItem"
+          >
+          </curd-list>
+          // 在父组件的methods属性中处理delete-item事件
+          deleteItem: function(index){
+          	this.list.splice(index, 1);
+          },
+          ```
+
+   15. 
 
    

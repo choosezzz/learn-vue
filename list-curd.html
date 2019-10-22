@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CURD</title>
+	<script src="vue.2.6.js"></script>
+</head>
+<body>
+	<div id="root">
+		Item：<input type="text" v-model="inputValue" @focus="hiddenTip"/> <button @click="addList">提交</button>
+		<div v-show="showTip">请填写Item</div>
+		<ul>
+			<curd-list v-for="(item,index) of list" 
+			    :key="index"
+				:index="index"
+				:item="item"
+				@delete-item="deleteItem"
+				@update-item="updateItem"
+			>
+			</curd-list>
+		</ul>
+	</div>
+	<script>
+		Vue.component('curd-list',{
+			props: ['item','index'],
+			template: "<li>{{item}} <button @click='updateItem'>修改</button> <button @click='deleteItem'>删除</button></li>",
+			methods: {
+				deleteItem: function(){
+					this.$emit('delete-item', this.index);
+				},
+				updateItem: function(){
+					this.$emit('update-item', this.index, "new");
+				}
+			}
+
+		});
+		new Vue({
+			el: "#root",
+			data: {
+				inputValue:'',
+				showTip: false,
+				list: []
+			},
+			methods: {
+				addList: function(){
+					if (this.inputValue == '') {
+						this.showTip = true;
+					}else{
+						this.list.push(this.inputValue);
+						this.inputValue = '';
+					}
+				},
+				hiddenTip: function(){
+					this.showTip = false;
+				},
+				deleteItem: function(index){
+					this.list.splice(index, 1);
+				},
+				updateItem: function(index, value){
+					this.$set(this.list, index, value)
+				}
+			}
+		});
+	</script>
+</body>
+</html>
